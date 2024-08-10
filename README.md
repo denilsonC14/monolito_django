@@ -116,6 +116,9 @@ Método: PUT (o PATCH para una actualización parcial)
 URL: http://localhost:8001/api/user/1/  (reemplaza '1' con el ID real del usuario)
 Headers:
 
+docker-compose down 
+detener lo eliminar microservicios
+
 
 ********
 
