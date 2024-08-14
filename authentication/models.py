@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+from django.conf import settings
+
 class User(AbstractUser):
     email = models.EmailField(unique=True)
     
@@ -20,3 +22,15 @@ class User(AbstractUser):
         related_name='custom_user_set',
         related_query_name='custom_user',
     )
+    
+class TareaEscolar(models.Model):
+    titulo = models.CharField(max_length=200)
+    descripcion = models.TextField()
+    fecha_entrega = models.DateField()
+    completada = models.BooleanField(default=False)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.titulo
+    
+    

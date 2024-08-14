@@ -30,7 +30,6 @@
 
 6. Navega al directorio del proyecto y configura el entorno:
     ```bash
-    cd auth_service
     pip install djangorestframework
     ```
 
