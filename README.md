@@ -106,17 +106,18 @@
   "fecha_entrega": "2024-08-14",
   "completada": false
 }`
--La API verificará si la fecha_entrega coincide con un día festivo y añadirá una advertencia en la descripción si es así
+
+-**La API verificará si la fecha_entrega coincide con un día festivo y añadirá una advertencia en la descripción si es así**
 12. Listar tareas:
--GET /api/tareas/
--Authorization: Token yourauthtoken
+-**GET /api/tareas/**
+-**Authorization: Token yourauthtoken**
 13. Actualizar una tarea:
--PUT /api/tareas/{id}/
--Authorization: Token yourauthtoken
--Content-Type: application/json
+-**PUT /api/tareas/{id}/**
+-**Authorization: Token yourauthtoken**
+-**Content-Type: application/json**
 14. eliminar una tareas
--DELETE /api/tareas/{id}/
--Authorization: Token yourauthtoken
+-**DELETE /api/tareas/{id}/**
+-**Authorization: Token yourauthtoken**
 
     
 
