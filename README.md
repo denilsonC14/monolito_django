@@ -3,7 +3,7 @@
 
 El proyecto está estructurado como una única aplicación Django, lo que significa que todo el código, desde las rutas hasta las vistas y los modelos, reside en un solo proyecto. Esta es la definición clásica de una arquitectura monolítica. En lugar de dividirse en múltiples servicios o microservicios, toda la funcionalidad se encuentra en un solo código base, gestionado por un único servidor.
 
-3. CRUD Completo (Crear, Leer, Actualizar, Eliminar)
+2. CRUD Completo (Crear, Leer, Actualizar, Eliminar)
 El proyecto implementa un CRUD completo para la entidad TareaEscolar:
 
 Crear (Create):
