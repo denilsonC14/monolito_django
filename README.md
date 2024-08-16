@@ -142,8 +142,8 @@ Este proyecto cumple con todos los requisitos especificados, integrando correcta
     - **Headers:**
         ```plaintext
         Content-Type: application/json
-        Authorization: Token <token_obtenido_del_login>
-         - **ejemplo:**  `{
+        Authorization: Token <token_obtenido_del_login>`
+    - **ejemplo:**  `{
   "titulo": "Estudiar para el examen",
   "descripcion": "Matemáticas y Ciencias",
   "fecha_entrega": "2024-08-14",
