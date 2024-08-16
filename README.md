@@ -2,9 +2,11 @@
 
 ## Pasos de Configuración
 
+
 1. Clona este repositorio y navega al directorio del microservicio:
     ```bash
-    cd microservicio
+    https://github.com/denilsonC14/monolito_django
+    cd auth_service
     ```
 
 2. Crea y activa un entorno virtual:
@@ -28,7 +30,7 @@
     python manage.py startapp authentication
     ```
 
-6. Navega al directorio del proyecto y configura el entorno:
+6. Navega al directorio del proyecto y configura el entorno para la creacion de las apis:
     ```bash
     pip install djangorestframework
     ```
@@ -58,10 +60,20 @@
 - **Registrar un nuevo usuario:**
     - **Método:** `POST`
     - **URL:** `http://localhost:8000/api/register/`
+    - **Contenido tipo :** `application/json`
+    - **ejemplo:**  `{
+  "username": "usuario123",
+  "email": "usuario@example.com",
+  "password": "passwordseguro"
+}`
   
 - **Iniciar sesión:**
     - **Método:** `POST`
     - **URL:** `http://localhost:8000/api/login/`
+    -  - **ejemplo:**  `{
+  "username": "usuario123",
+  "password": "passwordseguro"
+}`
 
 - **Obtener información del usuario:**
     - **Método:** `GET`
@@ -79,44 +91,44 @@
         Content-Type: application/json
         Authorization: Token <token_obtenido_del_login>
         ```
+11. Gestión de Tareas Escolares
+    Todas las rutas relacionadas con las tareas están protegidas y requieren un token de autenticación.
+    - **Creacion de una tarea :**
+    - **Método:** `POST` 
+    - **URL:** `http://localhost:8000/api/tareas/` 
+    - **Headers:**
+        ```plaintext
+        Content-Type: application/json
+        Authorization: Token <token_obtenido_del_login>
+         - **ejemplo:**  `{
+  "titulo": "Estudiar para el examen",
+  "descripcion": "Matemáticas y Ciencias",
+  "fecha_entrega": "2024-08-14",
+  "completada": false
+}`
+-La API verificará si la fecha_entrega coincide con un día festivo y añadirá una advertencia en la descripción si es así
+12. Listar tareas:
+-GET /api/tareas/
+-Authorization: Token yourauthtoken
+13. Actualizar una tarea:
+-PUT /api/tareas/{id}/
+-Authorization: Token yourauthtoken
+-Content-Type: application/json
+14. eliminar una tareas
+-DELETE /api/tareas/{id}/
+-Authorization: Token yourauthtoken
 
-## Dependencias
+    
 
-- Django
-- Django REST framework
+## Estructura del Proyecto
 
-## Activar el Microservicio en Docker
+-authentication/: Contiene los modelos, vistas, serializadores y rutas relacionadas con la autenticación y la gestión de usuarios y Implementa el CRUD para la entidad TareaEscolar, que permite a los usuarios gestionar sus tareas.
+-urls.py: Define las rutas para los diferentes endpoints de la API.
+-Contiene funciones utilitarias como es_dia_festivo, que verifica si una fecha es un día festivo utilizando una API externa.
+## API Externa Utilizada
+Nager.Date API: Esta API se utiliza para verificar si una fecha específica coincide con un día festivo en un país dado.
 
-Para construir y activar el microservicio utilizando Docker, ejecuta:
-
-```bash
-docker-compose up --build
-
- ## si hay cambios
--docker-compose exec web python manage.py migrate
-si quiero crear otro superusuario
--docker-compose exec web python manage.py createsuperuser
--ahora ingresa al http://localhost:8001/admin/
-para los endpoint 
-Registrar un nuevo usuario:
-Método: POST
-URL: http://localhost:8001/api/register/
-Iniciar sesión:
-Método: POST
-URL: http://localhost:8001/api/login/
-Obtener información del usuario:
-
-Método: GET
-URL: http://localhost:8001/api/user/1/  (reemplaza '1' con el ID real del usuario)
-Headers:
-
-
-Método: PUT (o PATCH para una actualización parcial)
-URL: http://localhost:8001/api/user/1/  (reemplaza '1' con el ID real del usuario)
-Headers:
-
-docker-compose down 
-detener lo eliminar microservicios
+Este `README.md` incluye instrucciones para la instalación y uso del proyecto, así como una descripción general de las funcionalidades y cómo contribuyen a los requisitos solicitados.
 
 
 ********
