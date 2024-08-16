@@ -1,4 +1,46 @@
 # Grupo 2 - Microservicio de Autenticación
+1. Arquitectura Monolítica
+El proyecto está estructurado como una única aplicación Django, lo que significa que todo el código, desde las rutas hasta las vistas y los modelos, reside en un solo proyecto. Esta es la definición clásica de una arquitectura monolítica. En lugar de dividirse en múltiples servicios o microservicios, toda la funcionalidad se encuentra en un solo código base, gestionado por un único servidor.
+
+2. CRUD Completo (Crear, Leer, Actualizar, Eliminar)
+El proyecto implementa un CRUD completo para la entidad TareaEscolar:
+
+Crear (Create):
+La función create en el TareaEscolarViewSet permite a los usuarios crear nuevas tareas escolares. Además, en este proceso se verifica si la fecha de entrega coincide con un día festivo, y si es así, se incluye una advertencia en la descripción.
+
+Leer (Read):
+La función get_queryset en el TareaEscolarViewSet se utiliza para leer (obtener) las tareas escolares del usuario autenticado.
+
+Actualizar (Update):
+Las tareas pueden ser actualizadas utilizando las vistas basadas en clases (RetrieveUpdateAPIView) o directamente mediante la vista de conjunto (ModelViewSet).
+
+Eliminar (Delete):
+Las tareas también pueden ser eliminadas utilizando la vista de conjunto (ModelViewSet), cumpliendo con la funcionalidad de eliminación dentro del CRUD.
+
+3. Sistema de Login
+El proyecto tiene implementado un sistema de autenticación y autorización para controlar el acceso a la aplicación:
+
+Registro:
+La vista RegisterView permite a los usuarios registrarse en la aplicación.
+
+Login:
+La vista LoginView permite a los usuarios autenticarse, devolviendo un token de autenticación. Este token es luego utilizado para acceder a las funcionalidades protegidas de la API.
+
+Autorización:
+La autenticación basada en tokens se configura en DEFAULT_AUTHENTICATION_CLASSES, lo que garantiza que solo los usuarios autenticados puedan acceder a los recursos. Las vistas están protegidas por la clase de permisos IsAuthenticated, lo que asegura que solo los usuarios autenticados puedan realizar operaciones CRUD en TareaEscolar.
+
+4. Consumo de una API de terceros
+El proyecto hace uso de la función es_dia_festivo para consultar una API de terceros:
+
+API de días festivos:
+La función es_dia_festivo utiliza la API de Nager.Date (https://date.nager.at) para obtener los días festivos en un país específico y determinar si una fecha de entrega coincide con un día festivo. Esto se integra en la lógica del negocio al crear una nueva TareaEscolar, añadiendo una advertencia si la fecha de entrega es un día festivo.
+Resumen:
+Arquitectura Monolítica: El proyecto está organizado como una sola aplicación Django.
+CRUD Completo: Implementado para la entidad TareaEscolar.
+Sistema de Login: Implementado con autenticación basada en tokens.
+Consumo de API de terceros: Implementado mediante la API de días festivos.
+Este proyecto cumple con todos los requisitos especificados, integrando correctamente cada componente solicitado.
+
 
 ## Pasos de Configuración
 
